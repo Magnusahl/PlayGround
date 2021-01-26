@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const response = [
@@ -22,26 +22,51 @@ const response = [
         title: 'Båt parken',
         description: 'Gungor & rutshikana',
         icon: require('../assets/playgroundSwing.png')
+    },
+    {
+        id: '3',
+        coordinates: {
+            latitude: 59.239394683986454,
+            longitude: 17.973204955010072,
+        },
+        title: 'Vistabergs parken',
+        description: 'Gungor',
+        icon: require('../assets/playgroundSwing.png')
+    },
+    {
+        id: '4',
+        coordinates: {
+            latitude: 59.239394683986454,
+            longitude: 17.973204955010072,
+        },
+        title: 'Glömsta skogen',
+        description: 'Rutshikana',
+        icon: require('../assets/playgroundSwing.png')
     }
 ]
 
-const Item = ({ title }) => (
+const Item = ({ title, description, icon }) => (
     <View style={styles.item}>
         <Text style={styles.title}>{title}</Text>
+        <Text style={styles.description}>{description}</Text>
+        <Image style={styles.imageIcon}>{icon}</Image>
     </View>
 );
 
-function ListSreen() {
+function ListScreen() {
     const renderItem = ({ item }) => (
-        <Item title={item.title} />
+        <TouchableOpacity  >
+            <Item title={item.title} description={item.description} />
+        </TouchableOpacity>
+
     );
 
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
                 data={response}
-                renderItem={renderItem}
                 keyExtractor={item => item.id}
+                renderItem={renderItem}
             />
         </SafeAreaView>
 
@@ -54,14 +79,25 @@ const styles = StyleSheet.create({
         marginTop: StatusBar.currentHeight || 0,
     },
     item: {
-        backgroundColor: '#f9c2ff',
+        backgroundColor: '#fff564',
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,
+        height: 150,
+        flexDirection: 'column'
+
     },
     title: {
         fontSize: 32,
     },
+    description: {
+        fontSize: 15,
+
+    },
+    imageIcon: {
+        height: 32,
+        width: 32
+    }
 });
 
-export default ListSreen;
+export default ListScreen;

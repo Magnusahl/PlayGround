@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Button, StyleSheet, Dimensions, Text, View, Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ListScreen from '../screens/ListScreen';
@@ -10,7 +9,6 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
     return (
-        // <NavigationContainer>
         <Tab.Navigator screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
                 let iconName;
@@ -34,7 +32,6 @@ const TabNavigation = () => {
             <Tab.Screen name="MapScreen" component={MapScreen} />
             <Tab.Screen name="ListScreen" component={ListScreen} />
         </Tab.Navigator>
-        // </NavigationContainer>
     );
 }
 
