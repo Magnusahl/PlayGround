@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const response = [
     {
@@ -30,7 +31,7 @@ const Item = ({ title }) => (
     </View>
 );
 
-const ListSreen = () => {
+function ListSreen() {
     const renderItem = ({ item }) => (
         <Item title={item.title} />
     );
