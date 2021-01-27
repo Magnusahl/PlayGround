@@ -26,6 +26,33 @@ export default [
         image: require('../assets/icon.png'),
         babySwing: require('../assets/babySwing.png'),
         swing: require('../assets/swing.png'),
+
+    },
+    {
+        id: '3',
+        coordinates: {
+            latitude: 59.236804552659535,
+            longitude: 17.970016946407142,
+        },
+        title: 'Spindel parken',
+        description: 'Swings and slides',
+        icon: require('../assets/playgroundTower.png'),
+        image: require('../assets/icon.png'),
+        swing: require('../assets/swing.png'),
         slide: require('../assets/slide.png'),
+
+    },
+    {
+        id: '4',
+        coordinates: {
+            latitude: 59.236804552659535,
+            longitude: 17.970016946407142,
+        },
+        title: 'Flottsbro',
+        description: 'Swings',
+        icon: require('../assets/playgroundTower.png'),
+        image: require('../assets/icon.png'),
+        swing: require('../assets/swing.png'),
+
     },
 ]

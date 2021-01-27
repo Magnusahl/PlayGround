@@ -2,44 +2,46 @@ import React from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import PlayGrounds from '../context/PlayGrounds';
+import Playground from '../screens/PlayGround';
 
 
 
-const Item = ({ title, description, icon, babySwing, swing, slide }) => (
-    <View style={styles.item}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
-        {/* <Image style={styles.imageIcon}>{icon}</Image> */}
-        <View style={{ flexDirection: 'row' }}>
-            <Image style={styles.imageIcon} >{babySwing}</Image>
-            <Image style={styles.imageIcon} >{swing}</Image>
-            <Image style={styles.imageIcon} >{slide}</Image>
-        </View>
+// const Item = ({ title, description, icon, babySwing, swing, slide }) => (
+//     <View style={styles.item}>
+//         <Text style={styles.title}>{title}</Text>
+//         <Text style={styles.description}>{description}</Text>
+//         {/* <Image style={styles.imageIcon}>{icon}</Image> */}
+//         <View style={{ flexDirection: 'row' }}>
+//             <Image style={styles.imageIcon} >{babySwing}</Image>
+//             <Image style={styles.imageIcon} >{swing}</Image>
+//             <Image style={styles.imageIcon} >{slide}</Image>
+//         </View>
 
-    </View>
-);
+//     </View>
+// );
 
 function ListScreen({ navigation }) {
-    const renderItem = ({ item }) => (
-        <TouchableOpacity onPress={() => navigation.navigate("PlayGround")} >
-            <Item title={item.title}
-                description={item.description}
-                icon={item.icon}
-                image={item.babySwing}
-                image={item.swing}
-                image={item.slide} />
-        </TouchableOpacity>
+    // const renderItem = ({ item }) => (
+    //     <TouchableOpacity onPress={() => navigation.navigate("PlayGround")} >
+    //         <Item title={item.title}
+    //             description={item.description}
+    //         />
+    //     </TouchableOpacity>
 
-    );
+    // );
 
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
                 data={PlayGrounds}
                 keyExtractor={item => item.id}
-                renderItem={({ item }) => (
-                    <Image source={'../assets/babySwing.png'} ></Image>
-                )}
+                renderItem={({ item }) => <Playground title={item.title}
+                    desc={item.description}
+                    swing={item.swing}
+                    babySwing={item.babySwing}
+                    slide={item.slide}
+                    sandbox={item.sandbox}
+                    PlayGrounds={item} />}
             />
         </SafeAreaView>
 

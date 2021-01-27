@@ -1,23 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, Button, View, Image } from 'react-native';
-import playgrounds from '../context/PlayGrounds';
+
 
 
 const PlayGround = (props) => {
 
-    const playgrounds = props.playgrounds
-
     return (
         <View style={styles.container}>
-            <Text>{playgrounds.title}</Text>
-            <Image style={styles.image} source={require('../assets/icon.png')} ></Image>
 
-            <Text>{playgrounds.description}</Text>
+            <Image style={styles.image} source={require('../assets/icon.png')} ></Image>
+            <Text style={styles.textTitle}>{props.title}</Text>
+            <Text style={styles.textDesc}>{props.desc}</Text>
             <View style={styles.icon}>
-                <Image style={styles.imageSwing} source={require('../assets/swing.png')} ></Image>
-                <Image style={styles.imageSwing} source={require('../assets/babySwing.png')} ></Image>
-                <Image style={styles.imageSwing} source={require('../assets/slide.png')} ></Image>
-                <Image style={styles.imageSwing} source={require('../assets/sandbox.png')} ></Image>
+                <Image style={styles.imageSwing} source={props.swing} ></Image>
+                <Image style={styles.imageSwing} source={props.babySwing} ></Image>
+                <Image style={styles.imageSwing} source={props.slide} ></Image>
+                <Image style={styles.imageSwing} source={props.sandbox} ></Image>
             </View>
         </View>
     )
@@ -29,20 +27,30 @@ const PlayGround = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f345',
-        alignItems: 'center',
-        flexDirection: 'column'
+        backgroundColor: '#fff',
+        flexDirection: 'column',
+        padding: 20
     },
     image: {
-        width: 250,
-        height: 250
+        width: '100%',
+        height: 150
     },
     imageSwing: {
-        width: 32,
-        height: 32
+        width: 48,
+        height: 48
     },
     icon: {
+        justifyContent: 'space-between',
         flexDirection: 'row'
+    },
+    textTitle: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginTop: 10,
+        marginBottom: 2
+    },
+    textDesc: {
+        marginBottom: 5
     }
 })
 

@@ -29,8 +29,9 @@ const TabNavigation = () => {
                 activeTintColor: 'tomato',
                 inactiveTintColor: 'gray',
             }} >
-            <Tab.Screen name="MapScreen" component={MapScreen} />
             <Tab.Screen name="ListScreen" component={ListScreen} />
+            <Tab.Screen name="MapScreen" component={MapScreen} />
+
         </Tab.Navigator>
     );
 }
