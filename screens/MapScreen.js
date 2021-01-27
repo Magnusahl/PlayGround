@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, StyleSheet, Dimensions, Text, View, Image } from 'react-native';
 
-import MapView from 'react-native-maps';
+import MapView, { Callout, CalloutSubview } from 'react-native-maps';
 import * as Location from 'expo-location';
 
 const { width, height } = Dimensions.get("screen");
@@ -60,7 +60,7 @@ const MapScreen = () => {
         initialRegion={
           mapRegion
         }
-        onPress={() => console.log("Map")}
+      // onPress={() => console.log("Map")}
       >
         <MapView.Marker coordinate={mapRegion}></MapView.Marker>
         {response.map(marker => (
@@ -68,8 +68,8 @@ const MapScreen = () => {
             key={marker.id}
             identifier={marker.id}
             coordinate={marker.coordinates}
-            title={marker.title}
-            description={marker.description}
+            // title={marker.title}
+            // description={marker.description}
             showUserLocation={true}
             onPress={() => console.log("Pressed")}
           >
