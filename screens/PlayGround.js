@@ -8,7 +8,7 @@ const PlayGround = (props) => {
     return (
         <View style={styles.container}>
 
-            <Image style={styles.image} source={require('../assets/icon.png')} ></Image>
+            <Image style={styles.image} source={props.image} ></Image>
             <Text style={styles.textTitle}>{props.title}</Text>
             <Text style={styles.textDesc}>{props.desc}</Text>
             <View style={styles.icon}>
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: 150
+        height: 150,
+        justifyContent: 'center'
     },
     imageSwing: {
         width: 48,

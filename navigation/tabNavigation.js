@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ListScreen from '../screens/ListScreen';
 import MapScreen from '../screens/MapScreen';
+import UserScreen from '../screens/UserScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -31,6 +32,7 @@ const TabNavigation = () => {
             }} >
             <Tab.Screen name="ListScreen" component={ListScreen} />
             <Tab.Screen name="MapScreen" component={MapScreen} />
+            <Tab.Screen name="UserScreen" component={UserScreen} />
 
         </Tab.Navigator>
     );

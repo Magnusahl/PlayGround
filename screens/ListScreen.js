@@ -37,6 +37,7 @@ function ListScreen({ navigation }) {
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => <Playground title={item.title}
                     desc={item.description}
+                    image={item.image}
                     swing={item.swing}
                     babySwing={item.babySwing}
                     slide={item.slide}
