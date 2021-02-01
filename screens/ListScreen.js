@@ -1,48 +1,59 @@
-import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import React, { useState } from 'react';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, ActivityIndicator } from 'react-native';
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import PlayGrounds from '../context/PlayGrounds';
 import Playground from '../screens/PlayGround';
 
-
-
-// const Item = ({ title, description, icon, babySwing, swing, slide }) => (
-//     <View style={styles.item}>
-//         <Text style={styles.title}>{title}</Text>
-//         <Text style={styles.description}>{description}</Text>
-//         {/* <Image style={styles.imageIcon}>{icon}</Image> */}
-//         <View style={{ flexDirection: 'row' }}>
-//             <Image style={styles.imageIcon} >{babySwing}</Image>
-//             <Image style={styles.imageIcon} >{swing}</Image>
-//             <Image style={styles.imageIcon} >{slide}</Image>
-//         </View>
-
-//     </View>
-// );
-
 function ListScreen({ navigation }) {
-    // const renderItem = ({ item }) => (
-    //     <TouchableOpacity onPress={() => navigation.navigate("PlayGround")} >
-    //         <Item title={item.title}
-    //             description={item.description}
-    //         />
-    //     </TouchableOpacity>
 
-    // );
+    const [loading, isLoading] = useState(null);
+    const [search, setSearch] = useState('');
+    const [filteredDataSource, setFilteredDataSource] = useState([]);
+    const [masterDataSource, setMasterDataSource] = useState(PlayGrounds);
+
+
+    const searchFilterFunction = (text) => {
+        if (text) {
+            const newData = masterDataSource.filter(function (item) {
+                const itemData = item.title
+                    ? item.title.toUpperCase()
+                    : ''.toUpperCase();
+                const textData = text.toUpperCase();
+                return itemData.indexOf(textData) > -1;
+            });
+            setFilteredDataSource(newData);
+            setSearch(text);
+        } else {
+            setFilteredDataSource(masterDataSource);
+            setSearch(text);
+        }
+    }
 
     return (
         <SafeAreaView style={styles.container}>
+            <TextInput
+                placeholder='Search'
+                placeholderTextColor='black'
+                onChangeText={(text) => searchFilterFunction(text)}
+
+            />
+
+
+
             <FlatList
-                data={PlayGrounds}
+                data={filteredDataSource}
                 keyExtractor={item => item.id}
-                renderItem={({ item }) => <Playground title={item.title}
-                    desc={item.description}
-                    image={item.image}
-                    swing={item.swing}
-                    babySwing={item.babySwing}
-                    slide={item.slide}
-                    sandbox={item.sandbox}
-                    PlayGrounds={item} />}
+                renderItem={({ item }) =>
+                    <TouchableOpacity onPress={() => navigation.navigate("MapScreen")} >
+                        <Playground title={item.title}
+                            desc={item.description}
+                            image={item.image}
+                            swing={item.swing}
+                            babySwing={item.babySwing}
+                            slide={item.slide}
+                            sandbox={item.sandbox}
+                            PlayGrounds={item} />
+                    </TouchableOpacity>}
             />
         </SafeAreaView>
 
@@ -80,3 +91,37 @@ const styles = StyleSheet.create({
 });
 
 export default ListScreen;
+
+
+
+
+
+
+
+
+{/* <View style={{ flex: 1, backgroundColor: 'white' }} >
+                {useState(isLoading ? (
+                    <View style={{
+                        ...StyleSheet.absoluteFill,
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }} >
+                        <ActivityIndicator size='large' color='black' />
+                    </View>
+                ) : null)}
+
+            </View> */}
+
+// ListEmptyComponent={() => (
+//     <View
+//         style={{
+//             flex: 1,
+//             alignItems: 'center',
+//             justifyContent: 'center',
+//             marginTop: 50
+//         }}
+//     >
+//         <Text style={{ color: '#bad555' }}>No PlayGrounds Found</Text>
+//     </View>
+
+// )}

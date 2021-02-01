@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Button, StyleSheet, Dimensions, Text, View, Image, TouchableOpacity } from 'react-native';
 import PlayGrounds from '../context/PlayGrounds';
 import MapView, { Callout, CalloutSubview } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { TextInput } from 'react-native-gesture-handler';
+import { AuthContext } from '../context/AuthContext';
 
 const { width, height } = Dimensions.get("screen");
 
-const MapScreen = () => {
+export default function MapScreen() {
+
+  const { setIsLoggedIn, signOut } = useContext(AuthContext);
+
+  const submit = () => {
+    // setIsLoggedIn(false);
+    signOut();
+  };
 
   const [errorMsg, setErrorMsg] = useState(null);
   const [mapRegion, setMapRegion] = useState(null);
@@ -24,8 +32,8 @@ const MapScreen = () => {
       setMapRegion({
         longitude: location.coords.longitude,
         latitude: location.coords.latitude,
-        latitudeDelta: 0.0022,
-        longitudeDelta: 0.0021
+        latitudeDelta: 0.0422,
+        longitudeDelta: 0.0921
       })
     })();
   }, []);
@@ -43,6 +51,10 @@ const MapScreen = () => {
         <TextInput onPress={() => console.log("Search")} style={styles.overlay}>
           <Text style={styles.text}>Touchable Opacity</Text>
         </TextInput>
+
+        <TouchableOpacity onPress={submit} style={styles.overlay}>
+          <Text>Logout</Text>
+        </TouchableOpacity>
 
         <MapView.Marker coordinate={mapRegion}></MapView.Marker>
         {PlayGrounds.map(marker => (
@@ -84,7 +96,7 @@ const styles = StyleSheet.create({
 
 })
 
-export default MapScreen;
+
 
   // const response = [
   //   {
