@@ -7,10 +7,6 @@ import { AuthContext } from '../context/AuthContext';
 export default function WelcomeScreen({ navigation }) {
     const { setIsLoggedIn, signOut } = useContext(AuthContext);
 
-    const submit = () => {
-        // setIsLoggedIn(false);
-        signOut();
-    }
 
     return (
         <View style={styles.container}>
@@ -33,17 +29,16 @@ const styles = StyleSheet.create({
         backgroundColor: 'blue',
     },
     loginButton: {
-        marginTop: 120,
+        marginTop: 200,
         width: 95,
         height: 50,
         backgroundColor: 'orange',
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        marginHorizontal: 10,
     },
     titleText: {
-        marginTop: -400,
+        marginTop: -200,
         fontSize: 50,
         width: 295,
         color: 'orange',
