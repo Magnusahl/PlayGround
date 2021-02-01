@@ -1,13 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, Button, View, Image } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, ActivityIndicator } from 'react-native';
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
-
-
-const PlayGround = (props) => {
+export default function PlaygroundDetailScreen(props) {
 
     return (
         <View style={styles.container}>
-
             <Image style={styles.image} source={props.image} ></Image>
             <Text style={styles.textTitle}>{props.title}</Text>
             <Text style={styles.textDesc}>{props.desc}</Text>
@@ -20,9 +18,6 @@ const PlayGround = (props) => {
         </View>
     )
 }
-
-
-
 
 const styles = StyleSheet.create({
     container: {
@@ -53,6 +48,5 @@ const styles = StyleSheet.create({
     textDesc: {
         marginBottom: 5
     }
-})
 
-export default PlayGround;
+})

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Image, ActivityIndicator } from 'react-native';
+import { SafeAreaView, View, FlatList, Modal, StyleSheet, Text, StatusBar, Image, ActivityIndicator } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import PlayGrounds from '../context/PlayGrounds';
-import Playground from '../screens/PlayGround';
+import Playground from '../components/PlayGround';
+import ReviewModal from '../components/ReviewModal';
 
-function ListScreen({ navigation }) {
+export default function ListScreen({ navigation }) {
 
     const [loading, isLoading] = useState(null);
     const [search, setSearch] = useState('');
     const [filteredDataSource, setFilteredDataSource] = useState([]);
     const [masterDataSource, setMasterDataSource] = useState(PlayGrounds);
 
+    const [modalVisible, setModalVisible] = useState(false);
 
     const searchFilterFunction = (text) => {
         if (text) {
@@ -31,30 +33,35 @@ function ListScreen({ navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
+
+            {/* <Modal
+                animationType='slide'
+                visible={modalVisible}>
+                <ReviewModal />
+            </Modal> */}
+
             <TextInput
                 placeholder='Search'
                 placeholderTextColor='black'
                 onChangeText={(text) => searchFilterFunction(text)}
-
             />
-
-
 
             <FlatList
                 data={filteredDataSource}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) =>
-                    <TouchableOpacity onPress={() => navigation.navigate("MapScreen")} >
-                        <Playground title={item.title}
-                            desc={item.description}
-                            image={item.image}
-                            swing={item.swing}
-                            babySwing={item.babySwing}
-                            slide={item.slide}
-                            sandbox={item.sandbox}
-                            PlayGrounds={item} />
-                    </TouchableOpacity>}
-            />
+                    <Playground title={item.title}
+                        desc={item.description}
+                        image={item.image}
+                        swing={item.swing}
+                        babySwing={item.babySwing}
+                        slide={item.slide}
+                        sandbox={item.sandbox}
+                        PlayGrounds={item}
+                        nextPage={() => navigation.navigate("MapScreen")}
+                        showModal={() => {
+                            setModalVisible(true);
+                        }} />} />
         </SafeAreaView>
 
     );
@@ -67,13 +74,12 @@ const styles = StyleSheet.create({
         marginTop: StatusBar.currentHeight || 0,
     },
     item: {
-        backgroundColor: '#fff564',
+        backgroundColor: '#fff664',
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,
-        height: 170,
+        height: 190,
         flexDirection: 'column'
-
     },
     title: {
         fontSize: 32,
@@ -87,10 +93,10 @@ const styles = StyleSheet.create({
         width: 32,
         backgroundColor: 'blue',
 
-    }
+    },
+
 });
 
-export default ListScreen;
 
 
 
