@@ -14,12 +14,18 @@ const TabNavigation = () => {
             tabBarIcon: ({ focused, color, size }) => {
                 let iconName;
 
-                if (route.name === 'Home') {
+                if (route.name === 'ListScreen') {
                     iconName = focused
-                        ? 'ios-information-circle'
-                        : 'ios-information-circle-outline';
-                } else if (route.name === 'Settings') {
-                    iconName = focused ? 'ios-list-box' : 'ios-list';
+                        ? 'list'
+                        : 'list-outline';
+                } else if (route.name === 'MapScreen') {
+                    iconName = focused
+                        ? 'map'
+                        : 'map-outline';
+                } else if (route.name === 'UserScreen') {
+                    iconName = focused
+                        ? 'person-circle'
+                        : 'person-circle-outline';
                 }
 
                 // You can return any component that you like here!
@@ -27,7 +33,7 @@ const TabNavigation = () => {
             },
         })}
             tabBarOptions={{
-                activeTintColor: 'tomato',
+                activeTintColor: 'blue',
                 inactiveTintColor: 'gray',
             }} >
             <Tab.Screen name="ListScreen" component={ListScreen} />

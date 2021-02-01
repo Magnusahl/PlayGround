@@ -10,7 +10,7 @@ export default function MyStack() {
 
     return (
 
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{ headerShown: false }} >
             <Stack.Screen name="MapScreen" component={TabNavigation} />
         </Stack.Navigator>
 

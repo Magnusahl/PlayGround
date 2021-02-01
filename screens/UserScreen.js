@@ -1,12 +1,44 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const UserScreen = () => {
+import { AuthContext } from '../context/AuthContext';
+
+export default function UserScreen() {
+
+    const { setIsLoggedIn, signOut } = useContext(AuthContext);
+
+    const submit = () => {
+        // setIsLoggedIn(false);
+        signOut();
+    };
+
     return (
-        <View>
+        <View style={styles.container} >
             <Text>Hi User, see your favorite playground!</Text>
+            <TouchableOpacity onPress={submit} style={styles.overlay}>
+                <Text>Logout</Text>
+            </TouchableOpacity>
         </View>
     )
 }
 
-export default UserScreen;
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    overlay: {
+        position: 'absolute',
+        bottom: 15,
+        left: 305,
+        backgroundColor: 'orange',
+        height: 40,
+        width: 100,
+        borderRadius: 80,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+})
+

@@ -8,7 +8,7 @@ export default function AuthNavigation() {
     const { user, isLoading } = useContext(AuthContext);
 
     return (
-        <NavigationContainer>
+        <NavigationContainer screenOptions={{ headerShown: false }}>
             {user ? <MainStackNavigation /> : <UnAuthStack />}
         </NavigationContainer>
     );

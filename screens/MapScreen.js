@@ -4,18 +4,10 @@ import PlayGrounds from '../context/PlayGrounds';
 import MapView, { Callout, CalloutSubview } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { TextInput } from 'react-native-gesture-handler';
-import { AuthContext } from '../context/AuthContext';
 
 const { width, height } = Dimensions.get("screen");
 
 export default function MapScreen() {
-
-  const { setIsLoggedIn, signOut } = useContext(AuthContext);
-
-  const submit = () => {
-    // setIsLoggedIn(false);
-    signOut();
-  };
 
   const [errorMsg, setErrorMsg] = useState(null);
   const [mapRegion, setMapRegion] = useState(null);
@@ -48,13 +40,9 @@ export default function MapScreen() {
         }
       // onPress={() => console.log("Map")}
       >
-        <TextInput onPress={() => console.log("Search")} style={styles.overlay}>
+        {/* <TextInput onPress={() => console.log("Search")} style={styles.overlay}>
           <Text style={styles.text}>Touchable Opacity</Text>
-        </TextInput>
-
-        <TouchableOpacity onPress={submit} style={styles.overlay}>
-          <Text>Logout</Text>
-        </TouchableOpacity>
+        </TextInput> */}
 
         <MapView.Marker coordinate={mapRegion}></MapView.Marker>
         {PlayGrounds.map(marker => (
@@ -84,15 +72,7 @@ const styles = StyleSheet.create({
     width,
     height
   },
-  overlay: {
-    position: 'absolute',
-    bottom: 850,
-    left: 125,
-    backgroundColor: 'white',
-    height: 30,
-    width: 195,
-    borderRadius: 20,
-  },
+
 
 })
 
