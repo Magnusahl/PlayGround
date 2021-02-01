@@ -41,6 +41,7 @@ export default function ListScreen({ navigation }) {
             </Modal> */}
 
             <TextInput
+                style={styles.inputStyles}
                 placeholder='Search'
                 placeholderTextColor='black'
                 onChangeText={(text) => searchFilterFunction(text)}
@@ -92,9 +93,14 @@ const styles = StyleSheet.create({
         height: 32,
         width: 32,
         backgroundColor: 'blue',
-
     },
-
+    inputStyles: {
+        color: 'black',
+        width: 420,
+        height: 45,
+        backgroundColor: 'gray',
+        textAlign: 'center'
+    },
 });
 
 
