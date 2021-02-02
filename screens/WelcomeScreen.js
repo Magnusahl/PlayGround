@@ -14,8 +14,17 @@ export default function WelcomeScreen({ navigation }) {
                 Welcome to PlayGround!
                 Come and Play!
             </Text>
-            <TouchableOpacity style={styles.loginButton} title='Login' onPress={() => navigation.navigate("LoginScreen")} >
+
+            <TouchableOpacity style={styles.loginButton}
+                title='Login'
+                onPress={() => navigation.navigate("LoginScreen")} >
                 <Text>Login</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.loginButton}
+                title='Register'
+                onPress={() => navigation.navigate("RegisterScreen")} >
+                <Text>Register</Text>
             </TouchableOpacity>
         </View>
     );
@@ -29,7 +38,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'blue',
     },
     loginButton: {
-        marginTop: 200,
+        marginTop: 50,
         width: 95,
         height: 50,
         backgroundColor: 'orange',
