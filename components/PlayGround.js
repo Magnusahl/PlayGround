@@ -1,24 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, Button, View, Image, TouchableOpacity } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-import { TextInput } from 'react-native-gesture-handler';
 import Spacer from './Spacer';
-import firebase from 'firebase';
-import 'firebase/firestore';
 
 export default function PlayGround(props) {
-
-    //     const saveReview = () => {
-    //         firebase.firestore()
-    //             .collection('reviews')
-    //             .doc(firebase.auth().currentUser.uid)
-    //             .collection('userReview')
-    //             .add({
-    //                 review,
-    //                 creation: firebase.firestore().FieldValue.serverTimestamp()
-    //             })
-    //     }
-    // }
 
     return (
 
@@ -27,6 +11,7 @@ export default function PlayGround(props) {
                 <Image style={styles.image} source={props.image} ></Image>
                 <Text style={styles.textTitle}>{props.title}</Text>
                 <Text style={styles.textDesc}>{props.desc}</Text>
+                <Text style={styles.textCity}>{props.city}</Text>
                 <View style={styles.icon}>
                     <Image style={styles.imageSwing} source={props.swing} ></Image>
                     <Image style={styles.imageSwing} source={props.babySwing} ></Image>
@@ -86,6 +71,10 @@ const styles = StyleSheet.create({
     },
     textDesc: {
         marginBottom: 5
+    },
+    textCity: {
+        fontWeight: 'bold',
+        marginBottom: 2
     },
     buttonReview: {
         width: 95,

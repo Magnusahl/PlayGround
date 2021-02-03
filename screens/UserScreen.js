@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
 
 function UserScreen(props) {
@@ -19,6 +19,7 @@ function UserScreen(props) {
             {/* <FlatList
                 data={reviews}
             /> */}
+
             <TouchableOpacity onPress={submit} style={styles.overlay}>
                 <Text>Logout</Text>
             </TouchableOpacity>

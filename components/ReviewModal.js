@@ -25,6 +25,7 @@ export default function ReviewModal({ modalVisible, setModalVisible }) {
 
 const styles = StyleSheet.create({
     container: {
+        top: 350,
         margin: 20,
         backgroundColor: "yellow",
         borderRadius: 20,
