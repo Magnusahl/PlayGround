@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
 import 'firebase/firestore';
 
@@ -34,9 +34,11 @@ export class RegisterScreen extends Component {
     }
 
     render() {
+
+
         return (
             <View style={styles.container}>
-                <Text style={styles.loginText}>
+                <Text style={styles.titleText}>
                     Register
           </Text>
                 <View style={{ width: '50%' }}>
@@ -65,13 +67,27 @@ export class RegisterScreen extends Component {
                         onChangeText={(password) => this.setState({ password })}
                         style={styles.inputStyles}
                     />
-                    <Button title="Register" onPress={() => this.register()} />
+                    <View style={styles.buttons}>
+                        <TouchableOpacity
+                            style={styles.registerButton}
+                            title="Register"
+                            onPress={() => this.register()} >
+                            <Text>Register</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.backButton}
+                            title="Go back"
+                            onPress={() => this.props.navigation.goBack()} >
+                            <Text>Go back</Text>
+                        </TouchableOpacity>
+                    </View>
+
                 </View>
             </View>
         );
     }
-
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -106,6 +122,27 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginHorizontal: 10,
     },
+    registerButton: {
+        marginTop: 50,
+        width: 95,
+        height: 50,
+        backgroundColor: 'orange',
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    backButton: {
+        marginTop: 50,
+        width: 95,
+        height: 50,
+        backgroundColor: 'blue',
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    buttons: {
+        flexDirection: 'row'
+    },
     loginButtonText: {
         fontSize: 50,
         color: 'blue'
@@ -115,6 +152,11 @@ const styles = StyleSheet.create({
         color: "blue",
         fontSize: 35,
         fontWeight: "bold"
+    },
+    titleText: {
+        top: -85,
+        fontSize: 75,
+        color: 'orange'
     }
 });
 

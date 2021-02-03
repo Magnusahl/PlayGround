@@ -3,34 +3,22 @@ import { StyleSheet, Text, Button, View, Image, TouchableOpacity } from 'react-n
 import AsyncStorage from '@react-native-community/async-storage';
 import { TextInput } from 'react-native-gesture-handler';
 import Spacer from './Spacer';
+import firebase from 'firebase';
+import 'firebase/firestore';
 
 export default function PlayGround(props) {
 
-    const [review, setReview] = useState();
-
-    const saveReview = async () => {
-        try {
-            await AsyncStorage.setItem("MyReview", review)
-        } catch (err) {
-            alert(err)
-        }
-    };
-
-    const loadReview = async () => {
-        try {
-            let review = await AsyncStorage.getItem("MyReview")
-
-            if (review !== null) {
-                setReview(review);
-            }
-        } catch (err) {
-            alert(err)
-        }
-    };
-
-    useEffect(() => {
-        loadReview();
-    }, []);
+    //     const saveReview = () => {
+    //         firebase.firestore()
+    //             .collection('reviews')
+    //             .doc(firebase.auth().currentUser.uid)
+    //             .collection('userReview')
+    //             .add({
+    //                 review,
+    //                 creation: firebase.firestore().FieldValue.serverTimestamp()
+    //             })
+    //     }
+    // }
 
     return (
 
@@ -47,7 +35,7 @@ export default function PlayGround(props) {
                 </View>
                 <View style={{ flexDirection: 'row', marginTop: 20, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={styles.buttonReview}
-                        onPress={() => console.log("Fuck off")}>
+                        onPress={props.showModal}>
                         <Text>Review</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttonSeeOnMap}
@@ -57,14 +45,14 @@ export default function PlayGround(props) {
                     </TouchableOpacity>
 
                 </View>
-                <TextInput
+                {/* <TextInput
                     placeholder='write a review'
                     onChangeText={(text) => setReview(text)}
                 ></TextInput>
                 <Button title='save the review'
                     onPress={() => saveReview()}
                 ></Button>
-                <Text style={{ height: 15 }} >{review}</Text>
+                <Text style={{ height: 15 }} >{review}</Text> */}
             </View>
         </Spacer >
     )

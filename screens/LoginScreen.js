@@ -1,15 +1,16 @@
 import React from 'react';
 import { useState, useContext } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AuthContext } from '../context/AuthContext';
 
-export default function LoginScreen({ navigation }) {
+export default function LoginScreen({ navigation: { goBack } }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const { setIsLoggedIn, logIn } = useContext(AuthContext);
 
-    const submit = () => {
+    const login = () => {
         // setIsLoggedIn(true);
         console.log('submitting log in');
         logIn(email, password);
@@ -18,7 +19,7 @@ export default function LoginScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.loginText}>
+            <Text style={styles.titleText}>
                 Login
       </Text>
             <View style={{ width: '50%' }}>
@@ -35,11 +36,25 @@ export default function LoginScreen({ navigation }) {
                 <TextInput
                     placeholder="Enter password"
                     value={password}
-                    secureTextEntry={"true"}
+                    secureTextEntry={true}
                     onChangeText={setPassword}
                     style={styles.inputStyles}
                 />
-                <Button title="Submit" onPress={submit} />
+                <View style={styles.buttons}>
+                    <TouchableOpacity
+                        style={styles.loginButton}
+                        title="Login"
+                        onPress={login} >
+                        <Text>Login</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.backButton}
+                        title="Go back"
+                        onPress={() => goBack()}>
+                        <Text>Go back</Text>
+                    </TouchableOpacity>
+                </View>
+
             </View>
         </View>
     );
@@ -51,6 +66,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'orange',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    titleText: {
+        top: -85,
+        fontSize: 75,
+        color: 'blue'
     },
     inputStyles: {
         color: 'black',
@@ -68,19 +88,27 @@ const styles = StyleSheet.create({
         color: "red",
         fontSize: 18,
     },
+    buttons: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
     loginButton: {
-        marginTop: 10,
+        marginTop: 50,
         width: 95,
         height: 50,
-        backgroundColor: 'orange',
+        backgroundColor: 'green',
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        marginHorizontal: 10,
     },
-    loginButtonText: {
-        fontSize: 50,
-        color: 'blue'
+    backButton: {
+        marginTop: 50,
+        width: 95,
+        height: 50,
+        backgroundColor: 'blue',
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     loginText: {
         marginTop: 10,

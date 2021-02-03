@@ -14,7 +14,6 @@ export default function AuthContextProvider({ children }) {
             setUser(user);
             setIsLoading(false);
         });
-
         return unsubscribe;
     });
 

@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View, FlatList, Modal, StyleSheet, Text, StatusBar, Image, ActivityIndicator } from 'react-native';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { SafeAreaView, FlatList, StyleSheet, StatusBar, Image, ActivityIndicator } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
 import PlayGrounds from '../context/PlayGrounds';
 import Playground from '../components/PlayGround';
 import ReviewModal from '../components/ReviewModal';
 
 export default function ListScreen({ navigation }) {
 
-    const [loading, isLoading] = useState(null);
     const [search, setSearch] = useState('');
-    const [filteredDataSource, setFilteredDataSource] = useState([]);
+    const [filteredDataSource, setFilteredDataSource] = useState(PlayGrounds);
     const [masterDataSource, setMasterDataSource] = useState(PlayGrounds);
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -34,15 +33,14 @@ export default function ListScreen({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
 
-            {/* <Modal
-                animationType='slide'
-                visible={modalVisible}>
-                <ReviewModal />
-            </Modal> */}
+            <ReviewModal
+                modalVisible={modalVisible}
+                setModalVisible={setModalVisible}
+            />
 
             <TextInput
                 style={styles.inputStyles}
-                placeholder='Search'
+                placeholder='Search Playground'
                 placeholderTextColor='black'
                 onChangeText={(text) => searchFilterFunction(text)}
             />
@@ -59,15 +57,12 @@ export default function ListScreen({ navigation }) {
                         slide={item.slide}
                         sandbox={item.sandbox}
                         PlayGrounds={item}
-                        nextPage={() => navigation.navigate("MapScreen")}
-                        showModal={() => {
-                            setModalVisible(true);
-                        }} />} />
+                        // nextPage={() => navigation.navigate("MapScreen")}
+                        showModal={() => { setModalVisible(true); }}
+                    />} />
         </SafeAreaView>
-
     );
 }
-
 
 const styles = StyleSheet.create({
     container: {

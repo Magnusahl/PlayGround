@@ -1,13 +1,22 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { Button, StyleSheet, Dimensions, Text, View, Image, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Dimensions, View, Image } from 'react-native';
 import PlayGrounds from '../context/PlayGrounds';
-import MapView, { Callout, CalloutSubview } from 'react-native-maps';
+import MapView from 'react-native-maps';
 import * as Location from 'expo-location';
-import { TextInput } from 'react-native-gesture-handler';
+// import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+// import { fetchUser, fetchUserReviews } from '../redux/actions/index';
 
 const { width, height } = Dimensions.get("screen");
 
 export default function MapScreen() {
+
+  // componentDidMount() {
+  //   this.props.fetchUser();
+  //   this.props.fetchUserReviews();
+  // }
+
+  // const { currentUser } = this.props;
 
   const [errorMsg, setErrorMsg] = useState(null);
   const [mapRegion, setMapRegion] = useState(null);
@@ -72,9 +81,18 @@ const styles = StyleSheet.create({
     width,
     height
   },
-
-
 })
+
+// const mapStateToProps = (store) => ({
+//   currentUser: store.userState.currentUser
+// })
+// const mapDispatchProps = (dispatch) => bindActionCreators({ fetchUser, fetchUserReviews }, dispatch);
+
+// export default connect(null, mapDispatchProps)(MapScreen);
+
+
+
+
 
 
 

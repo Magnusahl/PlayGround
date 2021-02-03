@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-
+import React, { useContext, useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
 
-export default function UserScreen() {
+function UserScreen(props) {
 
     const { setIsLoggedIn, signOut } = useContext(AuthContext);
+
+    // const { currentUser, reviews } = props;
 
     const submit = () => {
         // setIsLoggedIn(false);
@@ -14,13 +15,18 @@ export default function UserScreen() {
 
     return (
         <View style={styles.container} >
-            <Text>Hi User, see your favorite playground!</Text>
+            <Text>Hi, see your favorite playground!</Text>
+            {/* <FlatList
+                data={reviews}
+            /> */}
             <TouchableOpacity onPress={submit} style={styles.overlay}>
                 <Text>Logout</Text>
             </TouchableOpacity>
         </View>
     )
 }
+
+export default UserScreen;
 
 const styles = StyleSheet.create({
     container: {
