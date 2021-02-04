@@ -1,22 +1,19 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
 
-function UserScreen(props) {
-  const { setIsLoggedIn, signOut } = useContext(AuthContext);
-
-  // const { currentUser, reviews } = props;
+function UserScreen() {
+  const { signOut } = useContext(AuthContext);
 
   const submit = () => {
-    // setIsLoggedIn(false);
     signOut();
   };
   return (
     <View style={styles.container}>
-      <Text>Hi, see your favorite playground!</Text>
-      {/* <FlatList
-                data={reviews}
-            /> */}
+      <Image
+        style={styles.image}
+        source={require('../assets/playgroundSwing.png')}
+      />
 
       <TouchableOpacity onPress={submit} style={styles.overlay}>
         <Text>Logout</Text>
@@ -30,19 +27,33 @@ export default UserScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#E0391D',
     justifyContent: 'center',
     alignItems: 'center',
   },
   overlay: {
     position: 'absolute',
     bottom: 15,
-    left: 305,
+    left: 280,
     backgroundColor: 'orange',
-    height: 40,
-    width: 100,
+    height: 50,
+    width: 125,
     borderRadius: 80,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  image: {
+    top: 10,
+    bottom: 10,
+    width: 130,
+    height: 130,
   },
 });

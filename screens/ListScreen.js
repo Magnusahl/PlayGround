@@ -6,18 +6,11 @@ import Playground from '../components/PlayGround';
 import ReviewModal from '../components/ReviewModal';
 import Reviews from '../context/Reviews';
 
-export default function ListScreen() {
+export default function ListScreen({ navigation }) {
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState(PlayGrounds);
   const [masterDataSource, setMasterDataSource] = useState(PlayGrounds);
   const [selectedPlayground, setSelectedPlayground] = useState();
-
-  // function clickedOnMap(item) {
-  //     item.coordinates
-  //     navigation.navigate("MapScreen")
-  //     latitudeDelta: 0.0422,
-  //         longitudeDelta: 0.0921
-  // }
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -69,7 +62,7 @@ export default function ListScreen() {
             slide={item.slide}
             sandbox={item.sandbox}
             PlayGrounds={item}
-            // nextPage={{ navigateToMapScreen }, { clickedOnMap }}
+            mapScreen={() => navigation.navigate('MapScreen')}
             showModal={() => {
               setModalVisible(true);
               setSelectedPlayground(item.id);
@@ -85,14 +78,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
-  },
-  item: {
-    backgroundColor: '#fff664',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-    height: 190,
-    flexDirection: 'column',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   title: {
     fontSize: 32,
@@ -109,7 +102,15 @@ const styles = StyleSheet.create({
     color: 'black',
     width: 420,
     height: 45,
-    backgroundColor: 'gray',
+    backgroundColor: '#07C2E0',
     textAlign: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
 });

@@ -18,6 +18,7 @@ export default function Reviews({ children }) {
     }
   };
 
+  //Get playgrounds reviews
   const getReviews = async (review, playgroundId) => {
     var snapshot = await firebase
       .firestore()

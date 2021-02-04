@@ -28,6 +28,7 @@ export default [
     image: require('../assets/FullerstaPark.png'),
     babySwing: require('../assets/babySwing.png'),
     swing: require('../assets/swing.png'),
+    slide: require('../assets/slide.png'),
   },
   {
     id: '3',
@@ -54,7 +55,10 @@ export default [
     city: 'Huddinge',
     icon: require('../assets/playgroundSwing.png'),
     image: require('../assets/RådsParken.png'),
+    babySwing: require('../assets/babySwing.png'),
     swing: require('../assets/swing.png'),
+    slide: require('../assets/slide.png'),
+    sandbox: require('../assets/sandbox.png'),
   },
   {
     id: '5',
@@ -68,6 +72,7 @@ export default [
     icon: require('../assets/playgroundSwing.png'),
     image: require('../assets/Drakparken.png'),
     swing: require('../assets/swing.png'),
+    sandbox: require('../assets/sandbox.png'),
   },
   {
     id: '6',

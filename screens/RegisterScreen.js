@@ -68,22 +68,20 @@ export class RegisterScreen extends Component {
             onChangeText={(password) => this.setState({ password })}
             style={styles.inputStyles}
           />
-          <View style={styles.buttons}>
-            <TouchableOpacity
-              style={styles.backButton}
-              title="Go back"
-              onPress={() => this.props.navigation.goBack()}
-            >
-              <Text>Go back</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.registerButton}
-              title="Register"
-              onPress={() => this.register()}
-            >
-              <Text>Register</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            style={styles.registerButton}
+            title="Register"
+            onPress={() => this.register()}
+          >
+            <Text>Register</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.backButton}
+            title="Go back"
+            onPress={() => this.props.navigation.goBack()}
+          >
+            <Text>Go back</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -93,19 +91,26 @@ export class RegisterScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: '#22E08C',
     alignItems: 'center',
     justifyContent: 'center',
   },
   titleText: {
-    top: -85,
+    top: -45,
     fontSize: 75,
-    color: 'orange',
+    color: '#E09B00',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   inputStyles: {
     color: 'black',
     marginBottom: 10,
-    left: -15,
     width: 245,
     height: 50,
     borderRadius: 20,
@@ -113,34 +118,48 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   registerButton: {
-    marginTop: 50,
-    width: 95,
+    marginTop: 40,
+    marginBottom: 25,
+    left: 45,
+    width: 125,
     height: 50,
-    backgroundColor: 'orange',
+    backgroundColor: '#E09B00',
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   backButton: {
-    marginTop: 50,
-    width: 95,
+    left: 45,
+    width: 125,
     height: 50,
-    backgroundColor: 'blue',
+    backgroundColor: '#1252E0',
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   loginButtonText: {
     fontSize: 50,
-    color: 'blue',
+    color: '#1252E0',
   },
   loginText: {
     marginTop: 10,
-    color: 'blue',
+    color: '#1252E0',
     fontSize: 35,
     fontWeight: 'bold',
   },

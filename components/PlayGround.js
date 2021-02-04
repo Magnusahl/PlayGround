@@ -31,7 +31,7 @@ export default function PlayGround(props) {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.buttonSeeOnMap}
-            onPress={props.nextPage}
+            onPress={props.mapScreen}
           >
             <Text>See on map</Text>
           </TouchableOpacity>
@@ -75,28 +75,35 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   buttonReview: {
-    width: 95,
+    borderRadius: 80,
+    width: 125,
     height: 50,
-    backgroundColor: 'orange',
+    backgroundColor: '#E09B00',
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   buttonSeeOnMap: {
-    width: 95,
+    borderRadius: 80,
+    width: 125,
     height: 50,
-    backgroundColor: 'yellow',
+    backgroundColor: '#21E098',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  inputStyles: {
-    color: 'black',
-    marginBottom: 10,
-    left: -15,
-    width: 245,
-    height: 50,
-    borderRadius: 20,
-    backgroundColor: 'white',
-    paddingHorizontal: 10,
-    marginHorizontal: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
 });

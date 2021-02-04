@@ -36,22 +36,21 @@ export default function LoginScreen({ navigation: { goBack } }) {
           onChangeText={setPassword}
           style={styles.inputStyles}
         />
-        <View style={styles.buttons}>
-          <TouchableOpacity
-            style={styles.backButton}
-            title="Go back"
-            onPress={() => goBack()}
-          >
-            <Text>Go back</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.loginButton}
-            title="Login"
-            onPress={login}
-          >
-            <Text>Login</Text>
-          </TouchableOpacity>
-        </View>
+
+        <TouchableOpacity
+          style={styles.loginButton}
+          title="Login"
+          onPress={login}
+        >
+          <Text>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.backButton}
+          title="Go back"
+          onPress={() => goBack()}
+        >
+          <Text>Go back</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -60,50 +59,71 @@ export default function LoginScreen({ navigation: { goBack } }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'orange',
+    backgroundColor: '#E09B00',
     alignItems: 'center',
     justifyContent: 'center',
   },
   titleText: {
-    top: -85,
+    top: -45,
     fontSize: 75,
-    color: 'blue',
+    color: '#1252E0',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   inputStyles: {
     color: 'black',
     marginBottom: 10,
-    left: -15,
     width: 245,
     height: 50,
     borderRadius: 20,
     backgroundColor: 'white',
     paddingHorizontal: 10,
   },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
   loginButton: {
-    marginTop: 50,
-    width: 95,
+    left: 45,
+    marginTop: 40,
+    marginBottom: 25,
+    width: 125,
     height: 50,
-    backgroundColor: 'green',
+    backgroundColor: '#22E08C',
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   backButton: {
-    marginTop: 50,
-    width: 95,
+    left: 45,
+    width: 125,
     height: 50,
-    backgroundColor: 'blue',
+    backgroundColor: '#1252E0',
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   loginText: {
     marginTop: 10,
-    color: 'blue',
+    color: '#1252E0',
     fontSize: 35,
     fontWeight: 'bold',
   },
