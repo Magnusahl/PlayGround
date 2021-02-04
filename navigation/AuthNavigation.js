@@ -5,11 +5,10 @@ import UnAuthStack from './UnAuthStack';
 import { AuthContext } from '../context/AuthContext';
 
 export default function AuthNavigation() {
-    const { user, isLoading } = useContext(AuthContext);
-
-    return (
-        <NavigationContainer screenOptions={{ headerShown: false }}>
-            {user ? <MainStackNavigation /> : <UnAuthStack />}
-        </NavigationContainer>
-    );
+  const { user } = useContext(AuthContext);
+  return (
+    <NavigationContainer screenOptions={{ headerShown: false }}>
+      {user ? <MainStackNavigation /> : <UnAuthStack />}
+    </NavigationContainer>
+  );
 }

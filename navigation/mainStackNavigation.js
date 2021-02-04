@@ -4,12 +4,9 @@ import TabNavigation from '../navigation/tabNavigation';
 const Stack = createStackNavigator();
 
 export default function MyStack() {
-
-    return (
-
-        <Stack.Navigator screenOptions={{ headerShown: false }} >
-            <Stack.Screen name="MapScreen" component={TabNavigation} />
-        </Stack.Navigator>
-
-    )
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="MapScreen" component={TabNavigation} />
+    </Stack.Navigator>
+  );
 }
