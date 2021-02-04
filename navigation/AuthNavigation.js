@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import MainStackNavigation from './mainStackNavigation';
+import MainStackNavigation from './MainStackNavigation';
 import UnAuthStack from './UnAuthStack';
 import { AuthContext } from '../context/AuthContext';
 

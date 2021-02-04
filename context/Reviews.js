@@ -5,7 +5,6 @@ import 'firebase/firestore';
 export const ReviewsContext = createContext();
 
 export default function Reviews({ children }) {
-  const [reviews, setReviews] = useState('');
   const saveReview = async (review, playgroundId) => {
     try {
       firebase
@@ -20,21 +19,19 @@ export default function Reviews({ children }) {
   };
 
   const getReviews = async (review, playgroundId) => {
-    try {
-      const list = [];
-      var snapshot = await firebase
-        .firestore()
-        .collection('playgrounds')
-        .get()
-        .doc(playgroundId)
-        .collection('review');
-      snapshot.forEach((doc) => {
-        list.push(doc.data());
-      });
-      setReviewsList(list);
-    } catch (e) {
-      setErrorMessage('No playgrounds');
-    }
+    var snapshot = await firebase
+      .firestore()
+      .collection('playgrounds')
+      .doc(playgroundId)
+      .collection('reviews')
+      .get();
+
+    snapshot.forEach((doc) => {
+      const Review = doc.data();
+      Review.id = doc.id;
+      review.push(Review);
+    });
+    getReviews(review);
   };
 
   return (
@@ -43,3 +40,19 @@ export default function Reviews({ children }) {
     </ReviewsContext.Provider>
   );
 }
+
+// try {
+//   const list = [];
+//   var snapshot = await firebase
+//     .firestore()
+//     .collection('playgrounds')
+//     .get()
+//     .doc(playgroundId)
+//     .collection('review');
+//   snapshot.forEach((doc) => {
+//     list.push(doc.data());
+//   });
+//   setReviewsList(list);
+// } catch (e) {
+//   setErrorMessage('No playgrounds');
+// }

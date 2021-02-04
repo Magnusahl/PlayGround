@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { StyleSheet, View, Text, Button, Modal } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { FlatList, TextInput } from 'react-native-gesture-handler';
 import { ReviewsContext } from '../context/Reviews';
 
 export default function ReviewModal({
@@ -16,7 +16,7 @@ export default function ReviewModal({
   };
 
   return (
-    <Modal animationType="slide" transparent={true} visible={modalVisible}>
+    <Modal animationType="fade" transparent={true} visible={modalVisible}>
       <View style={styles.container}>
         <Text>Write a review of this playground</Text>
         <TextInput
@@ -32,7 +32,15 @@ export default function ReviewModal({
             setReview('');
           }}
         />
-        <Text>Reviews for :{getReviews}</Text>
+        <Text>Show review: {getReviews}</Text>
+        <FlatList
+          data={review}
+          renderItem={({ item }) => (
+            <View style={styles.flatlist}>
+              <Text>Review: {item.title}</Text>
+            </View>
+          )}
+        />
       </View>
     </Modal>
   );
@@ -54,5 +62,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+  },
+  flatlist: {
+    height: 50,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

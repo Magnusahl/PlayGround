@@ -3,22 +3,13 @@ import { StyleSheet, Dimensions, View, Image } from 'react-native';
 import PlayGrounds from '../context/PlayGrounds';
 import MapView from 'react-native-maps';
 import * as Location from 'expo-location';
-// import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import { fetchUser, fetchUserReviews } from '../redux/actions/index';
 
 const { width, height } = Dimensions.get('screen');
 
 export default function MapScreen() {
-  // componentDidMount() {
-  //   this.props.fetchUser();
-  //   this.props.fetchUserReviews();
-  // }
-
-  // const { currentUser } = this.props;
-
   const [errorMsg, setErrorMsg] = useState(null);
   const [mapRegion, setMapRegion] = useState(null);
+
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestPermissionsAsync();
@@ -43,12 +34,7 @@ export default function MapScreen() {
         style={styles.mapView}
         loadingEnabled={true}
         initialRegion={mapRegion}
-      // onPress={() => console.log("Map")}
       >
-        {/* <TextInput onPress={() => console.log("Search")} style={styles.overlay}>
-          <Text style={styles.text}>Touchable Opacity</Text>
-        </TextInput> */}
-
         <MapView.Marker coordinate={mapRegion} />
         {PlayGrounds.map((marker) => (
           <MapView.Marker

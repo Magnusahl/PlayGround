@@ -1,12 +1,5 @@
-import React, { useContext, useState } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  FlatList,
-  Button,
-} from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
 
 function UserScreen(props) {
