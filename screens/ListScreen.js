@@ -14,6 +14,7 @@ export default function ListScreen({ navigation }) {
 
   const [modalVisible, setModalVisible] = useState(false);
 
+  //The function for the playground screen
   const searchFilterFunction = (text) => {
     if (text) {
       const newData = masterDataSource.filter(function (item) {
@@ -86,6 +87,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 3.84,
     elevation: 5,
+    backgroundColor: '#D3D8E0',
   },
   title: {
     fontSize: 32,

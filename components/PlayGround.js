@@ -33,7 +33,7 @@ export default function PlayGround(props) {
             style={styles.buttonSeeOnMap}
             onPress={props.mapScreen}
           >
-            <Text>See on map</Text>
+            <Text>Map</Text>
           </TouchableOpacity>
         </View>
       </View>

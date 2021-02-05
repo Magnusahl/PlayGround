@@ -1,10 +1,11 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
 import firebase from 'firebase';
 import 'firebase/firestore';
 
 export const ReviewsContext = createContext();
 
 export default function Reviews({ children }) {
+  //Save reviews to firestore
   const saveReview = async (review, playgroundId) => {
     try {
       firebase

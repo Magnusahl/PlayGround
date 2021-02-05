@@ -7,7 +7,7 @@ import * as Location from 'expo-location';
 const { width, height } = Dimensions.get('screen');
 
 export default function MapScreen() {
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [setErrorMsg] = useState(null);
   const [mapRegion, setMapRegion] = useState(null);
 
   useEffect(() => {
@@ -17,16 +17,16 @@ export default function MapScreen() {
         setErrorMsg('Permission to access location was denied');
         return;
       }
-
+      //Show user location on the map
       let location = await Location.getCurrentPositionAsync({});
       setMapRegion({
         longitude: location.coords.longitude,
         latitude: location.coords.latitude,
-        latitudeDelta: 0.0422,
-        longitudeDelta: 0.0921,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
       });
     })();
-  }, []);
+  }, [setErrorMsg]);
 
   return (
     <View style={styles.container}>
@@ -41,8 +41,7 @@ export default function MapScreen() {
             key={marker.id}
             coordinate={marker.coordinates}
             title={marker.title}
-            // description={marker.description}
-            // showUserLocation={true}
+            city={marker.city}
             onPress={() => console.log('Pressed')}
           >
             <Image source={marker.icon} style={{ height: 32, width: 32 }} />

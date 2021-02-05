@@ -4,8 +4,8 @@ import { AuthContext } from '../context/AuthContext';
 
 function UserScreen() {
   const { signOut } = useContext(AuthContext);
-
-  const submit = () => {
+  //Logout the user
+  const logOut = () => {
     signOut();
   };
   return (
@@ -15,7 +15,7 @@ function UserScreen() {
         source={require('../assets/playgroundSwing.png')}
       />
 
-      <TouchableOpacity onPress={submit} style={styles.overlay}>
+      <TouchableOpacity onPress={logOut} style={styles.overlay}>
         <Text>Logout</Text>
       </TouchableOpacity>
     </View>
@@ -27,7 +27,7 @@ export default UserScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E0391D',
+    backgroundColor: '#D3D8E0',
     justifyContent: 'center',
     alignItems: 'center',
   },

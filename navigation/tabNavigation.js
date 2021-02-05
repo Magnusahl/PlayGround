@@ -13,7 +13,7 @@ const TabNavigation = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-
+          //Show icons when the right tab is pressed
           if (route.name === 'ListScreen') {
             iconName = focused ? 'list' : 'list-outline';
           } else if (route.name === 'MapScreen') {
@@ -21,7 +21,6 @@ const TabNavigation = () => {
           } else if (route.name === 'UserScreen') {
             iconName = focused ? 'person-circle' : 'person-circle-outline';
           }
-          // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}

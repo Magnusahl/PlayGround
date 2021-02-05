@@ -8,11 +8,9 @@ export default function LoginScreen({ navigation: { goBack } }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { setIsLoggedIn, logIn } = useContext(AuthContext);
+  const { logIn } = useContext(AuthContext);
 
   const login = () => {
-    // setIsLoggedIn(true);
-    console.log('submitting log in');
     logIn(email, password);
   };
 
@@ -24,6 +22,8 @@ export default function LoginScreen({ navigation: { goBack } }) {
         <TextInput
           placeholder="Enter email"
           value={email}
+          autoCorrect={false}
+          spellCheck={false}
           keyboardType="email-address"
           onChangeText={setEmail}
           style={styles.inputStyles}
@@ -32,6 +32,8 @@ export default function LoginScreen({ navigation: { goBack } }) {
         <TextInput
           placeholder="Enter password"
           value={password}
+          autoCorrect={false}
+          spellCheck={false}
           secureTextEntry={true}
           onChangeText={setPassword}
           style={styles.inputStyles}
@@ -59,14 +61,14 @@ export default function LoginScreen({ navigation: { goBack } }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E09B00',
+    backgroundColor: '#D3D8E0',
     alignItems: 'center',
     justifyContent: 'center',
   },
   titleText: {
     top: -45,
     fontSize: 75,
-    color: '#1252E0',
+    color: '#22E08C',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

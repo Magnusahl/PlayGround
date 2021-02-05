@@ -1,10 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { auth } from '../Firebase';
+import { auth } from '../context/Firebase';
 
 export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(true);
 

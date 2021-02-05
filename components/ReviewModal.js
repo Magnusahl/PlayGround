@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { StyleSheet, View, Text, Button, Modal } from 'react-native';
-import { FlatList, TextInput } from 'react-native-gesture-handler';
+import { TextInput } from 'react-native-gesture-handler';
 import { ReviewsContext } from '../context/Reviews';
 
 export default function ReviewModal({
@@ -9,7 +9,7 @@ export default function ReviewModal({
   selectedPlayground,
 }) {
   const [review, setReview] = useState('');
-  const { saveReview, getReviews } = useContext(ReviewsContext);
+  const { saveReview } = useContext(ReviewsContext);
 
   const reviewSave = () => {
     saveReview(review, selectedPlayground);
@@ -20,26 +20,27 @@ export default function ReviewModal({
       <View style={styles.container}>
         <Text>Write a review of this playground</Text>
         <TextInput
+          style={styles.textInput}
+          autoCorrect={false}
+          spellCheck={false}
           placeholder="Write here..."
           value={review}
           onChangeText={setReview}
         />
         <Button
-          title="save review"
+          title="Save review"
           onPress={() => {
             setModalVisible(false);
             reviewSave();
             setReview('');
           }}
         />
-        <Text>Show review: {getReviews}</Text>
-        <FlatList
-          data={review}
-          renderItem={({ item }) => (
-            <View style={styles.flatlist}>
-              <Text>Review: {item.title}</Text>
-            </View>
-          )}
+        <Button
+          title="Close"
+          onPress={() => {
+            setModalVisible(false);
+            setReview('');
+          }}
         />
       </View>
     </Modal>
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
   container: {
     top: 350,
     margin: 20,
-    backgroundColor: 'yellow',
+    backgroundColor: '#D3D8E0',
     borderRadius: 20,
     padding: 35,
     alignItems: 'center',
@@ -68,5 +69,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  textInput: {
+    marginTop: 10,
+    marginBottom: 10,
   },
 });

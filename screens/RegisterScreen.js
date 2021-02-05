@@ -20,6 +20,7 @@ export class RegisterScreen extends Component {
     this.register = this.register.bind(this);
   }
 
+  //Register the user
   register() {
     const { email, password, name } = this.state;
     firebase
@@ -50,6 +51,8 @@ export class RegisterScreen extends Component {
           <TextInput
             placeholder="Enter your name"
             keyboardType="default"
+            autoCorrect={false}
+            spellCheck={false}
             onChangeText={(name) => this.setState({ name })}
             style={styles.inputStyles}
           />
@@ -58,12 +61,16 @@ export class RegisterScreen extends Component {
           <TextInput
             placeholder="Enter email"
             keyboardType="email-address"
+            autoCorrect={false}
+            spellCheck={false}
             onChangeText={(email) => this.setState({ email })}
             style={styles.inputStyles}
           />
           <Text style={styles.loginText}>Password</Text>
           <TextInput
             placeholder="Enter password"
+            autoCorrect={false}
+            spellCheck={false}
             secureTextEntry={true}
             onChangeText={(password) => this.setState({ password })}
             style={styles.inputStyles}
@@ -91,7 +98,7 @@ export class RegisterScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#22E08C',
+    backgroundColor: '#D3D8E0',
     alignItems: 'center',
     justifyContent: 'center',
   },
